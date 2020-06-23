@@ -2,13 +2,11 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Modelo de Conversão - Aprenda a vender qualquer coisa pela internet">
     <meta name="author" content="Gabriel Marcelino">
-
-    <title>Modelo de Conversão</title>
+    <title>Obrigado por se Cadastrar !</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,251 +20,83 @@
 
     <!-- Custom CSS -->
     <link href="css/stylish-portfolio.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/obrigado.css">
 </head>
 
-<body id="page-top">
+<body>
+    <?php
+                         if (isset($_POST['BTEnvia'])){
+ 
+	                     //REMETENTE --> ESTE EMAIL TEM QUE SER VALIDO DO DOMINIO
+ 	                     //====================================================
+	                     $email_remetente = "gabrielmarcelino@mclweb.com.br"; // deve ser um email do dominio
+	                     //====================================================
+ 
+ 
+	                     //Configurações do email, ajustar conforme necessidade
+	                     //====================================================
+	                     $email_destinatario = "carlosfelipe.negocios@gmail.com"; // qualquer email pode receber os dados
+	                     $email_reply = "$email";
+	                     $email_assunto = "Cadastro de email - Site Modelo de Conversão";
+	                     //====================================================
+ 
+ 
+	                     //Variaveis de POST, Alterar somente se necessário
+	                     //====================================================
+	                     $email = $_POST['email'];
+	                     
+	                     //====================================================
+ 
+	                     //Monta o Corpo da Mensagem
+	                     //==================================================== 
+	                     $email_conteudo = "Email = $email \n";                         
+	       
+ 	                     //====================================================
+ 
+	                     //Seta os Headers (Alerar somente caso necessario)
+	                     //====================================================
+	                     $email_headers = implode ( "\n",array ( "From: $email_remetente", "Reply-To: $email_reply", "Subject: $email_assunto","Return-Path:  $email_remetente","MIME-Version: 1.0","X-Priority: 3","Content-Type: text/html; charset=UTF-8" ) );
+	                     //====================================================
+ 
+ 
+	                     //Enviando o email
+	                     //====================================================
+	                     if (mail ($email_destinatario, $email_assunto, nl2br($email_conteudo), $email_headers)){
+		                     
+                             echo "<script>alert('Foi enviado com sucesso, obrigado por se cadastrar !');</script>";
 
-    <!-- Navigation -->
-    <a class="menu-toggle rounded" href="#">
-        <i class="fas fa-bars"></i>
-    </a>
-    <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a class="js-scroll-trigger" href="#page-top">Modelo de Conversão</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="#page-top">Home</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="#sobre">Sobre</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="#diferenciais">Diferenciais</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="#cursos">Cursos</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="#nos-fazemos">Nós Fazemos</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="#ebook">E-book</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="#comunidade">Comunidade</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="#contato">Contato</a>
-            </li>
-        </ul>
-    </nav>
+	                    }
+  	                    else{
+		                     echo "</b>Falha no envio do E-Mail!</b>";
+	                    }
+	                     //====================================================
+                        }	
+                       ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="img/logo.png" alt="">
+                <h1 class="text-center">Muito obrigado !</h1>
+                <h3 class="text-center mt-4">Falta apenas 1 passo:</h3>
 
-    <!-- Header -->
-    <header class="masthead d-flex">
-        <div class="container text-center my-auto">
-            <img src="img/logo.png" alt="">
-            <h1 class="mb-2">Aprenda a vender <span>qualquer coisa</span> pela internet !</h1>
-            <h4 class="mb-5">
-                <em>Descubra o segredo de vender mais online todos os dias.</em>
-            </h4>
-            <form class="form" action="obrigado.php" method="post">
-                <div class="form-group">
-                    <input placeholder="Cadastre seu e-mail" type="email" id="email" name="email">
-                    <button name="BTEnvia" class="btn btn-primary" id="btn-envia">QUERO PARTICIPAR AGORA</button>
-                </div>
-            </form>
-        </div>
-        <div class="overlay"></div>
-    </header>
+                <p class="text-center mt-4">Acesse sua conta de e-mail para verificar a mensagem de inscrição
+                    enviada pelo Modelo de Conversão.</p>
 
-    <!-- About -->
-    <section class="content-section bg-light sobre" id="sobre">
-        <h1 class="text-center">Modelo de Conversão</h1>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-lg-12 mx-auto segunda-divisa">
-                    <div class="card">
-                        <div class="card-header">
-                            Aprendizado Dinâmico
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Nosso modelo é 100% remoto com um aprendizado dinâmico e colaborativo.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            Gestão Online
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Comece do absoluto ZERO até a gestão PROFISSIONAL da sua empresa online.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            Modelo de Negócios
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Criamos conteúdos específicos para desenvolver seu modelo de negócios pela internet.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card m-0">
-                        <div class="card-header">
-                            Clientes Certos
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Atraia as pessoas certas para o seu negócio online todos os dias pela internet.
-                            </p>
-                        </div>
-                    </div>
+                <h5 class="text-center">Junte-se no Telegram</h5>
+                <a target="_blank" href="https://t.me/modelodeconversao" class="btn btn-telegram"><i class="fa fa-telegram"></i><span>Telegram</span></a>
 
-                </div>
-                <form class="form" action="obrigado.php" method="post">
-                    <div class="form-group">
-                        <input placeholder="Cadastre seu e-mail" type="email" id="email" name="email">
-                        <button name="BTEnvia" class="btn btn-primary" id="btn-envia">QUERO PARTICIPAR AGORA</button>
-                    </div>
-                </form>
+                <h5 class="text-center">Inscreva-se no Youtube</h5>
+                <p class="text-center">Inscreva-se no canal do youtube para ter acesso a essas e outras aulas exclusivas do Modelo de Conversão</p>
+                <a target="_blank" href="https://www.youtube.com/channel/UCbPPez-1IaKpg6Cb8c5Q0ZA?" class="btn btn-youtube"><i class="fa fa-youtube-play"></i><span>Inscreva-se</span></a>
+
+                <ul class="mt-5">
+                    <li><a href="" data-toggle="modal" data-target="#myModalConsideracoes">Considerações importantes</a></li>
+                    <li><a href="" data-toggle="modal" data-target="#myModalPolitica">Política de privacidade</a></li>
+                    <li><a href="" data-toggle="modal" data-target="#myModalTermos">Termos de uso</a></li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <!-- Services -->
-    <section class="content-section bg-primary text-white text-center" id="diferenciais">
-        <div class="container">
-            <div class="content-section-heading">
-                <h2 class="mb-5">DIFERENCIAIS</h2>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                    <span class="service-icon rounded-circle mx-auto mb-3">
-                        <i class="icon-screen-smartphone"></i>
-                    </span>
-                    <h4>
-                        <strong>Treinamentos</strong>
-                    </h4>
-                    <p class="text-faded mb-0">Oferecemos o melhor do Treinamento Digital para quem quer estudar de casa e também o melhor acompanhamento por meio de Mentorias.</p>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                    <span class="service-icon rounded-circle mx-auto mb-3">
-                        <i class="icon-pencil"></i>
-                    </span>
-                    <h4>
-                        <strong>Gestão de Tráfego</strong>
-                    </h4>
-                    <p class="text-faded mb-0">Levamos tráfego qualificado para seu negócio utilizando as maiores redes sociais da atualidade.</p>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                    <span class="service-icon rounded-circle mx-auto mb-3">
-                        <i class="icon-like"></i>
-                    </span>
-                    <h4>
-                        <strong>Google</strong>
-                    </h4>
-                    <p class="text-faded mb-0">Nosso objetivo é na educação de excelência e utilizamos apenas o que há de melhor para nossos estudantes. Logo, a parceria com a Google era inevitável. Unimos o melhor modelo de ensino a metodologias modernas aplicadas à educação online.</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <span class="service-icon rounded-circle mx-auto mb-3">
-                        <i class="icon-mustache"></i>
-                    </span>
-                    <h4>
-                        <strong>Mentoria</strong>
-                    </h4>
-                    <p class="text-faded mb-0">Esse é um modelo de negócio para quem deseja exclusividade e conteúdo 100% direcionado para suas necessidades. Um investimento que garante acompanhamento direto e assertivo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Callout -->
-    <section class="callout" id="cursos">
-        <div class="container text-center">
-            <h2 class="mx-auto mb-5">Cursos e Capacitação</h2>
-            <ul>
-                <li><i class="fa fa-check-square-o"></i> Temos um treinamento completo de Imersão Digital para empreendedores.</li>
-                <li><i class="fa fa-check-square-o"></i> Treinamento focado em estratégias para vendas online, através do Facebook Ads.</li>
-                <li><i class="fa fa-check-square-o"></i> Além do treinamento, você ganha acesso à Comunidade Exclusiva, com 1 encontro semanal para tirar dúvidas online ao vivo!</li>
-            </ul>
-            <form class="form" action="obrigado.php" method="post">
-                <div class="form-group">
-                    <input placeholder="Cadastre seu e-mail" type="email" id="email" name="email">
-                    <button name="BTEnvia" class="btn btn-primary" id="btn-envia">QUERO PARTICIPAR AGORA</button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <section class="content-section oque" id="nos-fazemos">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="text-center">O que podemos fazer para o seu negócio ?</h2>
-                    <ul class="col-md-12">
-                        <li class="col-md-6"><i class="fa fa-mail-forward"></i> Lançamento de Produtos - Auxiliamos e participamos de cada etapa do processo de lançamento do seu produto ou serviço online.</li>
-                        <li class="col-md-6"><i class="fa fa-mail-forward"></i> Gestão de Tráfego - Campanhas inteligentes através do Facebook Ads e Google Ads.</li>
-                        <li class="col-md-6"><i class="fa fa-mail-forward"></i> Estratégia de Vendas - Criamos novas estratégias de atendimento e vendas pelo whatsApp para seu negócio decolar.</li>
-                        <li class="col-md-6"><i class="fa fa-mail-forward"></i> Co-produção - Ajudamos a tirar seu projeto do papel e monetizamos ele na internet.</li>
-                        <li class="col-md-6"><i class="fa fa-mail-forward"></i> Imersão Digital - Modelo de conversão é especializado em educar e transformar os modelos de negócios online de empreendedores(as) e organizações.</li>
-                        <li class="col-md-6"><i class="fa fa-mail-forward"></i> Gestão de Negócios - Montamos um modelo integrado de gestão, vendas, marketing e delivery de sua empresa online.</li>
-                    </ul>
-                    <form class="form" action="obrigado.php" method="post">
-                        <div class="form-group">
-                            <input placeholder="Cadastre seu e-mail" type="email" id="email" name="email">
-                            <button name="BTEnvia" class="btn btn-primary" id="btn-envia">QUERO PARTICIPAR AGORA</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="content-section bg-primary text-white ebook" id="ebook">
-        <div class="container text-center">
-            <h2 class="mb-4"><span>E-Book</span> - Modelo de Conversão</h2>
-            <div class="ebook-div">
-                <p>Esse livro vai te mostrar o passo a passo para você aprender a<br>VENDER QUALQUER COISA PELA INTERNET<br> e ter resultados incríveis através da inovação do seu modelo de negócios para vendas online.</p>
-                <p>R$ 9,90</p>
-                <a target="_blank" href="https://www.hotmart.com/product/e-book-como-colocar-seu-negocio-para-vender-mais-online/F30617058L?fbclid=IwAR0dPypapADWdRr5bqear5x_UUF9IqbVuF8BG8QQidzkC3U2N-2BwdJOHNo" class="btn btn-light">QUERO COMPRAR AGORA</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section info" id="comunidade">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-12">
-                        <h3 class="text-center">Comunidade</h3>
-                        <p class="text-center info-desc">Acompanhe os bastidores, acesse conteúdos exclusivos, informações e notícias, receba os melhores conteúdos para seu negócio online e comece alavancar suas vendas na internet.</p>
-                        <ul>
-                            <li><a target="_blank" href="https://t.me/modelodeconversao"><i class="fa fa-telegram"></i>
-                                    <p>Telegram</p>
-                                </a></li>
-                            <li><a target="_blank" href="http://modelodeconversao.blogspot.com/"><i class="fa fa-weixin"></i>
-                                    <p>Blog</p>
-                                </a></li>
-                            <li><a target="_blank" href="https://www.instagram.com/modelodeconversao/"><i class="fa fa-instagram"></i>
-                                    <p>Instagram</p>
-                                </a></li>
-                            <li><a target="_blank" href="https://www.facebook.com/modelodeconversao/"><i class="fa fa-facebook-square"></i>
-                                    <p>Facebook</p>
-                                </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    </div>
     <!-- Modal Considerações Inportantes-->
     <div id="myModalConsideracoes" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
@@ -399,35 +229,6 @@
     </div>
     <!-- Fim Modal Termos de Uso-->
 
-
-
-
-    <!-- Footer -->
-    <footer class="footer text-center" id="contato">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 footer-div">
-                    <div class="col-md-4">
-                        <h4>Contato</h4>
-                        <p>Rua São Sebastião, 15 QD: 59 Loja A - Engenho do Mato - Niterói - CEP: 24346190
-                            <br>Email: modelodeconversao@gmail.com
-                            <br>Telefone: (21) 97159-6306
-                        </p>
-                    </div>
-                    <div class="col-md-4">
-                        <ul>
-                            <li><a href="" data-toggle="modal" data-target="#myModalConsideracoes">Considerações importantes</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#myModalPolitica">Política de privacidade</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#myModalTermos">Termos de uso</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <p class="text-muted small mb-0">Copyright &copy; Your Website 2020</p>
-        </div>
-    </footer>
-
     <!-- Scroll to Top Button-->
     <a id="btn-whatsapp" class="btn-whatsapp" href="http://api.whatsapp.com/send?1=pt_BR&phone=5521971596306"><i class="fa fa-whatsapp"></i></a>
 
@@ -440,7 +241,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/stylish-portfolio.min.js"></script>
-
 </body>
 
 </html>
